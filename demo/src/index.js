@@ -16,7 +16,9 @@ const Demo = React.createClass({
       <div>
         <AppBar title="Youtube Playlist" />
         <div className="container">
-          <YoutubePlaylist />
+          <YoutubePlaylist
+            playlists={["DMT","Twin Peaks","Sharon Stone"]}
+          />
         </div>
       </div>
     </MuiThemeProvider>
