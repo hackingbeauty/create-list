@@ -12,13 +12,13 @@ import './styles/demo-page-styles.scss';
 
 const Demo = React.createClass({
   render() {
+    const playlists = ['DMT','TWIN PEAKS','SHARON STONE'];
     return <MuiThemeProvider>
       <div>
         <AppBar title="Youtube Playlist" />
         <div className="container">
           <YoutubePlaylist
-            playlists={["DMT","Twin Peaks","Sharon Stone"]}
-          />
+            playlists={playlists} />
         </div>
       </div>
     </MuiThemeProvider>

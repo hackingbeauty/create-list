@@ -16,4 +16,12 @@ describe('<YoutubePlaylist />', function() {
     expect(component.find('.placeholder').text()).to.equal('Add to List');
   });
 
+  it('should display a list of playlists', function() {
+
+  });
+
+  it('should display a default message if there are no playlists', function() {
+
+  });
+
 });
