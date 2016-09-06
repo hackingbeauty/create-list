@@ -3,9 +3,9 @@ import { Popover,
          Menu,
          MenuItem,
          FontIcon,
-         TextField,
          RaisedButton,
          Divider }          from 'material-ui';
+import TextField            from './TextField';
 
 export default class YoutubePlaylist extends Component {
   constructor(props) {
@@ -13,9 +13,12 @@ export default class YoutubePlaylist extends Component {
     this.display = this.display.bind(this);
     this.close = this.close.bind(this);
     this.createNewPlaylist = this.createNewPlaylist.bind(this);
+    this.onPlaylistNameEnter = this.onPlaylistNameEnter.bind(this);
     this.state = {
-      open           : false,
-      createPlaylist : false
+      open                : false,
+      createPlaylist      : false,
+      playlistNameEntered : false,
+      playlistName        : ''
     };
   }
 
@@ -27,7 +30,6 @@ export default class YoutubePlaylist extends Component {
       anchorEl: event.currentTarget
     });
   }
-
 
   close() {
     this.setState({
@@ -75,15 +77,18 @@ export default class YoutubePlaylist extends Component {
 
   getNewPlaylistComponent() {
     const self = this;
+
     if(this.state.createPlaylist) {
       return (
         <div className="youtube-playlist-create-new">
-          <TextField hintText="Enter playlist name" />
+          <TextField
+            callback={this.onPlaylistNameEnter}
+            placeholder="Enter playlist name" />
           <br />
           <RaisedButton
             label="Create"
             primary={true}
-            disabled={true}
+            disabled={(self.state.playlistNameEntered ? false : true)}
             className="btn" />
         </div>
       );
@@ -98,35 +103,35 @@ export default class YoutubePlaylist extends Component {
     }
   }
 
+  onPlaylistNameEnter(event, textInputValue) {
+    this.setState({
+      playlistNameEntered : true,
+      playlistName        : textInputValue
+    });
+  }
+
   render() {
     const
       self = this,
       props = this.props,
-      placeholder = getPlaceholder(props),
       playlists = this.getPlaylists();
 
     return (
       <div className="youtube-playlist">
         <div onTouchTap={this.display}>
-          <span className="placeholder">{placeholder}</span>
+          <span className="placeholder">{props.placeholder}</span>
           <FontIcon className="material-icons">add</FontIcon>
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-          targetOrigin={{horizontal: 'left', vertical: 'top'}}
-          onRequestClose={this.close} >
+          <Popover
+            open={this.state.open}
+            anchorEl={this.state.anchorEl}
+            anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
+            targetOrigin={{horizontal: 'left', vertical: 'top'}}
+            onRequestClose={this.close}>
             {playlists}
           </Popover>
         </div>
       </div>
     );
-  }
-}
-
-function getPlaceholder(props) {
-  if(props.placeholder) {
-    return props.placeholder;
   }
 }
 

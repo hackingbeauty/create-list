@@ -1,7 +1,7 @@
 import React              from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect }         from 'chai';
-import YoutubePlaylist    from '../../../src/index';
+import YoutubePlaylist    from '../../../src/YoutubePlaylist';
 
 describe('<YoutubePlaylist />', function() {
 
