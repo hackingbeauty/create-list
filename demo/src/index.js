@@ -3,7 +3,7 @@ import {render}             from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { AppBar,
          MuiThemeProvider } from 'material-ui';
-import YoutubePlaylist      from '../../src/YoutubePlaylist';
+import YoutubePlaylist      from '../../src/index';
 
 injectTapEventPlugin();
 

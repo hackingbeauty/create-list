@@ -3,9 +3,9 @@ import { Popover,
          Menu,
          MenuItem,
          FontIcon,
+         TextField,
          RaisedButton,
          Divider }          from 'material-ui';
-import TextField            from './TextField';
 
 export default class YoutubePlaylist extends Component {
   constructor(props) {
@@ -17,9 +17,13 @@ export default class YoutubePlaylist extends Component {
     this.state = {
       open                : false,
       createPlaylist      : false,
-      playlistNameEntered : false,
+      playlistNameEntered : 0,
       playlistName        : ''
     };
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return nextState.playlistNameEntered === 0;
   }
 
   display(event) {
@@ -33,8 +37,9 @@ export default class YoutubePlaylist extends Component {
 
   close() {
     this.setState({
-      open           : false,
-      createPlaylist : false
+      open                : false,
+      createPlaylist      : false,
+      playlistNameEntered : 0
     });
   }
 
@@ -82,13 +87,14 @@ export default class YoutubePlaylist extends Component {
       return (
         <div className="youtube-playlist-create-new">
           <TextField
-            callback={this.onPlaylistNameEnter}
-            placeholder="Enter playlist name" />
+            onChange={self.onPlaylistNameEnter}
+            hintText="Enter playlist name" />
           <br />
           <RaisedButton
             label="Create"
             primary={true}
-            disabled={(self.state.playlistNameEntered ? false : true)}
+            disabled={false}
+            // disabled={(self.state.playlistNameEntered === 0 ? true : false)}
             className="btn" />
         </div>
       );
@@ -104,8 +110,9 @@ export default class YoutubePlaylist extends Component {
   }
 
   onPlaylistNameEnter(event, textInputValue) {
+    const self = this;
     this.setState({
-      playlistNameEntered : true,
+      playlistNameEntered : self.state.playlistNameEntered + 1,
       playlistName        : textInputValue
     });
   }
