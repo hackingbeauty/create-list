@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Popover,
-         Menu,
-         MenuItem,
          FontIcon,
          TextField,
          RaisedButton,
          Checkbox,
+         Menu,
+         MenuItem,
          Divider }          from 'material-ui';
+import Playlist             from './Playlist';
 
 export default class YoutubePlaylist extends Component {
   constructor(props) {
@@ -19,21 +20,22 @@ export default class YoutubePlaylist extends Component {
     this.state = {
       open                : false,
       createPlaylist      : false,
-      playlistNameEntered : 0,
-      playlistName        : ''
+      playlistNameCharsNum : 0,
+      newPlaylist         : '',
+      playlists           : props.playlists
     };
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return nextState.playlistNameEntered === 0;
+    return nextState.playlistNameCharsNum === 0;
   }
 
   display(event) {
     event.preventDefault();
 
     this.setState({
-      open: true,
-      anchorEl: event.currentTarget
+      open     : true,
+      anchorEl : event.currentTarget
     });
   }
 
@@ -41,7 +43,7 @@ export default class YoutubePlaylist extends Component {
     this.setState({
       open                : false,
       createPlaylist      : false,
-      playlistNameEntered : 0
+      playlistNameCharsNum : 0
     });
   }
 
@@ -56,34 +58,27 @@ export default class YoutubePlaylist extends Component {
       self = this,
       props = this.props,
       state = this.state,
+      playlists = {playlists: this.props.playlists},
       newPlaylistComponent = this.getNewPlaylistComponent();
 
-    if(props.playlists && props.playlists.length) {
-      return (
-        <div>
-          <Menu>
-            <MenuItem><Checkbox/>test1</MenuItem>
-            <MenuItem><Checkbox/>test2</MenuItem>
-            <MenuItem><Checkbox/>test3</MenuItem>
-            <MenuItem><Checkbox/>test4</MenuItem>
-          </Menu>
-          <Divider />
-          {newPlaylistComponent}
-        </div>
-      );
-    } else {
-      return (
-        <Menu>
-          <MenuItem primaryText="You 0 playlists" />
-          <Divider />
-          {newPlaylistComponent}
-        </Menu>
-      );
-    }
+    return (
+      <div>
+        <Playlist props={playlists} />
+        <Divider />
+        {newPlaylistComponent}
+      </div>
+    );
   }
 
   addPlaylist() {
-    alert('will add');
+    let playlists = this.state.playlists;
+    playlists.push(this.state.newPlaylist);
+
+    this.setState({
+      playlists: playlists
+    },function() {
+      this.forceUpdate();
+    });
   }
 
   getNewPlaylistComponent() {
@@ -100,7 +95,7 @@ export default class YoutubePlaylist extends Component {
             label="Create"
             primary={true}
             onTouchTap={self.addPlaylist}
-            // disabled={(self.state.playlistNameEntered === 0 ? true : false)}
+            // disabled={(self.state.playlistNameCharsNum === 0 ? true : false)}
             className="btn" />
         </div>
       );
@@ -115,15 +110,15 @@ export default class YoutubePlaylist extends Component {
     }
   }
 
-  onPlaylistNameEnter(event, textInputValue) {
+  onPlaylistNameEnter(event) {
     const self = this;
 
     if(event.key === 'Enter') {
       this.addPlaylist();
     } else {
       this.setState({
-        playlistNameEntered : self.state.playlistNameEntered + 1,
-        playlistName        : textInputValue
+        playlistNameCharsNum : self.state.playlistNameCharsNum + 1,
+        newPlaylist         : event.currentTarget.value
       });
     }
 
