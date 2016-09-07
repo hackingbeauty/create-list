@@ -5,6 +5,7 @@ import { Popover,
          FontIcon,
          TextField,
          RaisedButton,
+         Checkbox,
          Divider }          from 'material-ui';
 
 export default class YoutubePlaylist extends Component {
@@ -14,6 +15,7 @@ export default class YoutubePlaylist extends Component {
     this.close = this.close.bind(this);
     this.createNewPlaylist = this.createNewPlaylist.bind(this);
     this.onPlaylistNameEnter = this.onPlaylistNameEnter.bind(this);
+    this.addPlaylist = this.addPlaylist.bind(this);
     this.state = {
       open                : false,
       createPlaylist      : false,
@@ -60,10 +62,10 @@ export default class YoutubePlaylist extends Component {
       return (
         <div>
           <Menu>
-            <MenuItem primaryText="1" />
-            <MenuItem primaryText="2" />
-            <MenuItem primaryText="3" />
-            <MenuItem primaryText="4" />
+            <MenuItem><Checkbox/>test1</MenuItem>
+            <MenuItem><Checkbox/>test2</MenuItem>
+            <MenuItem><Checkbox/>test3</MenuItem>
+            <MenuItem><Checkbox/>test4</MenuItem>
           </Menu>
           <Divider />
           {newPlaylistComponent}
@@ -80,6 +82,10 @@ export default class YoutubePlaylist extends Component {
     }
   }
 
+  addPlaylist() {
+    alert('will add');
+  }
+
   getNewPlaylistComponent() {
     const self = this;
 
@@ -87,12 +93,13 @@ export default class YoutubePlaylist extends Component {
       return (
         <div className="youtube-playlist-create-new">
           <TextField
-            onChange={self.onPlaylistNameEnter}
+            onKeyPress={self.onPlaylistNameEnter}
             hintText="Enter playlist name" />
           <br />
           <RaisedButton
             label="Create"
             primary={true}
+            onTouchTap={self.addPlaylist}
             // disabled={(self.state.playlistNameEntered === 0 ? true : false)}
             className="btn" />
         </div>
@@ -110,10 +117,16 @@ export default class YoutubePlaylist extends Component {
 
   onPlaylistNameEnter(event, textInputValue) {
     const self = this;
-    this.setState({
-      playlistNameEntered : self.state.playlistNameEntered + 1,
-      playlistName        : textInputValue
-    });
+
+    if(event.key === 'Enter') {
+      this.addPlaylist();
+    } else {
+      this.setState({
+        playlistNameEntered : self.state.playlistNameEntered + 1,
+        playlistName        : textInputValue
+      });
+    }
+
   }
 
   render() {
@@ -128,6 +141,7 @@ export default class YoutubePlaylist extends Component {
           <span className="placeholder">{props.placeholder}</span>
           <FontIcon className="material-icons">add</FontIcon>
           <Popover
+            key="popover"
             open={this.state.open}
             anchorEl={this.state.anchorEl}
             anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
