@@ -72,10 +72,13 @@ export default class YoutubePlaylist extends Component {
 
   addPlaylist() {
     let playlists = this.state.playlists;
+
     playlists.push(this.state.newPlaylist);
 
     this.setState({
-      playlists: playlists
+      playlists            : playlists,
+      newPlaylist          : '',
+      playlistNameCharsNum : 0
     },function() {
       this.forceUpdate();
     });
@@ -88,7 +91,7 @@ export default class YoutubePlaylist extends Component {
       return (
         <div className="youtube-playlist-create-new">
           <TextField
-            onKeyPress={self.onPlaylistNameEnter}
+            onKeyUp={self.onPlaylistNameEnter}
             hintText="Enter playlist name" />
           <br />
           <RaisedButton
@@ -113,12 +116,14 @@ export default class YoutubePlaylist extends Component {
   onPlaylistNameEnter(event) {
     const self = this;
 
+    debugger;
+
     if(event.key === 'Enter') {
       this.addPlaylist();
     } else {
       this.setState({
         playlistNameCharsNum : self.state.playlistNameCharsNum + 1,
-        newPlaylist         : event.currentTarget.value
+        newPlaylist          : event.currentTarget.value
       });
     }
 
