@@ -93,7 +93,6 @@ export default class YoutubePlaylist extends Component {
           <RaisedButton
             label="Create"
             primary={true}
-            disabled={false}
             // disabled={(self.state.playlistNameEntered === 0 ? true : false)}
             className="btn" />
         </div>
