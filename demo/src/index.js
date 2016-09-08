@@ -12,7 +12,6 @@ import './styles/demo-page-styles.scss';
 
 const Demo = React.createClass({
   callback(newPlaylist) {
-    alert(newPlaylist);
   },
 
   render() {

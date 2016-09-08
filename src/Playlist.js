@@ -36,7 +36,7 @@ function getPlaylistItems(playlists) {
 
   while(len--) {
     playlistItems.push(
-      <ListItem key={'listItem'+len} listItem={playlists[len]} />
+      <ListItem key={'listItem'+len} listItem={playlists[len]} checked={true} />
     );
   }
   return playlistItems;
