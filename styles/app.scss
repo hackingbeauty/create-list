@@ -2,20 +2,20 @@
   cursor: pointer;
 }
 
-.playlistItem {
+.listItem {
   clear: both;
   display: inline-block !important;
   width: 100%;
 
 }
 
-.playlistCheckbox {
+.listCheckbox {
   float: left;
   width: 10% !important;
   margin-top: 10px;
 }
 
-.playlistName {
+.listName {
   float: left;
   width: 79%;
   overflow: hidden;

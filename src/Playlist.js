@@ -1,11 +1,10 @@
 /**
- * Menu
+ * Playlist
  */
 
-import React                          from 'react';
-import { Checkbox,
-         Menu as MUIMenu,
-         MenuItem as MUIMenuItem } from 'material-ui';
+import React                from 'react';
+import { Menu as MUIMenu  } from 'material-ui';
+import ListItem             from './ListItem';
 
 export default function Playlist(args) {
   const playlists = args.props.playlists;
@@ -37,10 +36,7 @@ function getPlaylistItems(playlists) {
 
   while(len--) {
     playlistItems.push(
-      <MUIMenuItem key={'playlistItem'+len} className="playlistItem">
-        <Checkbox className='playlistCheckbox' />
-        <span className="playlistName">{playlists[len]}</span>
-      </MUIMenuItem>
+      <ListItem key={'listItem'+len} listItem={playlists[len]} />
     );
   }
   return playlistItems;
