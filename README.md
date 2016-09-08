@@ -1,3 +1,3 @@
-# youtube-playlist
+# Create List
 
-A React component that mimics Youtube's Add To Playlist feature.
+A React UI component that lets you add items to a list.
