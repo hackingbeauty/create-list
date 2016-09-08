@@ -8,6 +8,7 @@ import { Popover,
          MenuItem,
          Divider }          from 'material-ui';
 import Playlist             from './Playlist';
+import TextInput            from './TextInput';
 
 export default class YoutubePlaylist extends Component {
   constructor(props) {
@@ -90,9 +91,7 @@ export default class YoutubePlaylist extends Component {
     if(this.state.createPlaylist) {
       return (
         <div className="youtube-playlist-create-new">
-          <TextField
-            onKeyUp={self.onPlaylistNameEnter}
-            hintText="Enter playlist name" />
+          <TextInput />
           <br />
           <RaisedButton
             label="Create"
