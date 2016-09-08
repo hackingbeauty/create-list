@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Popover,
          FontIcon,
          TextField,
-         RaisedButton,
          Checkbox,
          Menu,
          MenuItem,
@@ -16,20 +15,14 @@ export default class YoutubePlaylist extends Component {
     this.display = this.display.bind(this);
     this.close = this.close.bind(this);
     this.createNewPlaylist = this.createNewPlaylist.bind(this);
-    this.onPlaylistNameEnter = this.onPlaylistNameEnter.bind(this);
     this.addPlaylist = this.addPlaylist.bind(this);
     this.state = {
-      open                : false,
-      createPlaylist      : false,
-      playlistNameCharsNum : 0,
-      newPlaylist         : '',
-      playlists           : props.playlists
+      open           : false,
+      createPlaylist : false,
+      playlists      : props.playlists
     };
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.playlistNameCharsNum === 0;
-  }
 
   display(event) {
     event.preventDefault();
@@ -71,34 +64,23 @@ export default class YoutubePlaylist extends Component {
     );
   }
 
-  addPlaylist() {
+  addPlaylist(newPlaylist) {
     let playlists = this.state.playlists;
 
-    playlists.push(this.state.newPlaylist);
+    playlists.push(newPlaylist);
 
     this.setState({
-      playlists            : playlists,
-      newPlaylist          : '',
-      playlistNameCharsNum : 0
+      playlists : playlists,
     },function() {
       this.forceUpdate();
     });
   }
 
   getNewPlaylistComponent() {
-    const self = this;
-
     if(this.state.createPlaylist) {
       return (
         <div className="youtube-playlist-create-new">
-          <TextInput />
-          <br />
-          <RaisedButton
-            label="Create"
-            primary={true}
-            onTouchTap={self.addPlaylist}
-            // disabled={(self.state.playlistNameCharsNum === 0 ? true : false)}
-            className="btn" />
+          <TextInput callback={this.addPlaylist}/>
         </div>
       );
     } else {
@@ -106,26 +88,10 @@ export default class YoutubePlaylist extends Component {
         <Menu>
           <MenuItem
             primaryText="Create new playlist"
-            onTouchTap={self.createNewPlaylist} />
+            onTouchTap={this.createNewPlaylist} />
         </Menu>
       );
     }
-  }
-
-  onPlaylistNameEnter(event) {
-    const self = this;
-
-    debugger;
-
-    if(event.key === 'Enter') {
-      this.addPlaylist();
-    } else {
-      this.setState({
-        playlistNameCharsNum : self.state.playlistNameCharsNum + 1,
-        newPlaylist          : event.currentTarget.value
-      });
-    }
-
   }
 
   render() {
