@@ -34,9 +34,8 @@ export default class YoutubePlaylist extends Component {
 
   close() {
     this.setState({
-      open                : false,
-      createPlaylist      : false,
-      playlistNameCharsNum : 0
+      open           : false,
+      createPlaylist : false
     });
   }
 
@@ -73,6 +72,8 @@ export default class YoutubePlaylist extends Component {
     },function() {
       this.forceUpdate();
     });
+
+    this.props.callback(newPlaylist);
   }
 
   getNewPlaylistComponent() {
@@ -121,7 +122,8 @@ export default class YoutubePlaylist extends Component {
 
 YoutubePlaylist.propTypes = {
   placeholder : React.PropTypes.string,
-  playlists   : React.PropTypes.array
+  playlists   : React.PropTypes.array,
+  callback    : React.PropTypes.func.isRequired
 };
 
 YoutubePlaylist.defaultProps = {

@@ -11,6 +11,10 @@ import '../../styles/app.scss';
 import './styles/demo-page-styles.scss';
 
 const Demo = React.createClass({
+  callback(newPlaylist) {
+
+  },
+
   render() {
     const playlists = ['DMT','TWIN PEAKS','SHARON STONE'];
     return <MuiThemeProvider>
@@ -18,6 +22,7 @@ const Demo = React.createClass({
         <AppBar title="Youtube Playlist" />
         <div className="container">
           <YoutubePlaylist
+            callback={this.callback}
             playlists={playlists} />
         </div>
       </div>
