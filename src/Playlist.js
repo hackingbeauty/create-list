@@ -37,7 +37,10 @@ function getPlaylistItems(playlists) {
 
   while(len--) {
     playlistItems.push(
-      <MUIMenuItem key={'playlistItem'+len}><Checkbox/>{playlists[len]}</MUIMenuItem>
+      <MUIMenuItem key={'playlistItem'+len} className="playlistItem">
+        <Checkbox className='playlistCheckbox' />
+        <span className="playlistName">{playlists[len]}</span>
+      </MUIMenuItem>
     );
   }
   return playlistItems;

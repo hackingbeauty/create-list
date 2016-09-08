@@ -42,6 +42,7 @@ export default class TextInput extends Component {
       <div>
         <TextField
           id="textFieldInput"
+          autoFocus
           value={this.state.playlistName}
           onKeyPress={this.onKeyPress}
           onChange={this.onChange} />

@@ -23,7 +23,6 @@ export default class YoutubePlaylist extends Component {
     };
   }
 
-
   display(event) {
     event.preventDefault();
 

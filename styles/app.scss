@@ -2,6 +2,25 @@
   cursor: pointer;
 }
 
+.playlistItem {
+  clear: both;
+  display: inline-block !important;
+  width: 100%;
+
+}
+
+.playlistCheckbox {
+  float: left;
+  width: 10% !important;
+  margin-top: 10px;
+}
+
+.playlistName {
+  float: left;
+  width: 79%;
+  overflow: hidden;
+}
+
 .youtube-playlist-create-new {
   padding: 15px;
   display: inline-block;
