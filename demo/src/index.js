@@ -3,7 +3,7 @@ import {render}             from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { AppBar,
          MuiThemeProvider } from 'material-ui';
-import YoutubePlaylist      from '../../src/YoutubePlaylist';
+import CreateList           from '../../src/Createlist';
 
 injectTapEventPlugin();
 
@@ -20,7 +20,7 @@ const Demo = React.createClass({
       <div>
         <AppBar title="Youtube Playlist" />
         <div className="container">
-          <YoutubePlaylist
+          <CreateList
             callback={this.callback}
             playlists={playlists} />
         </div>

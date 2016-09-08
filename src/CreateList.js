@@ -6,10 +6,10 @@ import { Popover,
          Menu,
          MenuItem,
          Divider }          from 'material-ui';
-import Playlist             from './Playlist';
+import ListCollection       from './ListCollection';
 import TextInput            from './TextInput';
 
-export default class YoutubePlaylist extends Component {
+export default class CreateList extends Component {
   constructor(props) {
     super(props);
     this.display = this.display.bind(this);
@@ -55,7 +55,7 @@ export default class YoutubePlaylist extends Component {
 
     return (
       <div>
-        <Playlist props={playlists} />
+        <ListCollection props={playlists} />
         <Divider />
         {newPlaylistComponent}
       </div>

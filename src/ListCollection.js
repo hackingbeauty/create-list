@@ -6,7 +6,7 @@ import React                from 'react';
 import { Menu as MUIMenu  } from 'material-ui';
 import ListItem             from './ListItem';
 
-export default function Playlist(args) {
+export default function ListCollection(args) {
   const playlists = args.props.playlists;
 
   if(playlists && playlists.length) {
