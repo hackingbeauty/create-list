@@ -3,37 +3,36 @@
  */
 
 import React, { Component} from 'react';
-import {
-          TextField,
-          RaisedButton }    from 'material-ui';
+import { TextField,
+        RaisedButton }     from 'material-ui';
 
 export default class TextInput extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
-    this.submitPlaylist = this.submitPlaylist.bind(this);
+    this.submitList = this.submitList.bind(this);
     this.onKeyPress = this.onKeyPress.bind(this);
     this.state = {
-      playlistName : ''
+      listName : ''
     }
   }
 
   onChange(event) {
     this.setState({
-      playlistName : event.currentTarget.value
+      listName : event.currentTarget.value
     });
   }
 
   onKeyPress(event) {
     if(event.key === 'Enter') {
-      this.submitPlaylist();
+      this.submitList();
     }
   }
 
-  submitPlaylist() {
-    this.props.callback(this.state.playlistName);
+  submitList() {
+    this.props.callback(this.state.listName);
     this.setState({
-      playlistName : ''
+      listName : ''
     });
   }
 
@@ -43,15 +42,15 @@ export default class TextInput extends Component {
         <TextField
           id="textFieldInput"
           autoFocus
-          value={this.state.playlistName}
+          value={this.state.listName}
           onKeyPress={this.onKeyPress}
           onChange={this.onChange} />
         <br />
         <RaisedButton
           label="Create"
           primary={true}
-          disabled={(this.state.playlistName ? false : true)}
-          onTouchTap={this.submitPlaylist}
+          disabled={(this.state.listName ? false : true)}
+          onTouchTap={this.submitList}
           className="btn" />
       </div>
     )

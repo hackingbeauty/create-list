@@ -9,17 +9,17 @@ import { Popover,
 import ListCollection       from './ListCollection';
 import TextInput            from './TextInput';
 
-export default class CreateList extends Component {
+export default class createList extends Component {
   constructor(props) {
     super(props);
     this.display = this.display.bind(this);
     this.close = this.close.bind(this);
-    this.createNewPlaylist = this.createNewPlaylist.bind(this);
-    this.addPlaylist = this.addPlaylist.bind(this);
+    this.createNewlist = this.createNewlist.bind(this);
+    this.addlist = this.addlist.bind(this);
     this.state = {
-      open           : false,
-      createPlaylist : false,
-      playlists      : props.playlists
+      open       : false,
+      createList : false,
+      lists      : props.lists
     };
   }
 
@@ -35,60 +35,60 @@ export default class CreateList extends Component {
   close() {
     this.setState({
       open           : false,
-      createPlaylist : false
+      createList : false
     });
   }
 
-  createNewPlaylist() {
+  createNewlist() {
     this.setState({
-      createPlaylist : true
+      createList : true
     });
   }
 
-  getPlaylists() {
+  getlists() {
     const
       self = this,
       props = this.props,
       state = this.state,
-      playlists = {playlists: this.props.playlists},
-      newPlaylistComponent = this.getNewPlaylistComponent();
+      lists = {lists: this.props.lists},
+      newlistComponent = this.getNewlistComponent();
 
     return (
       <div>
-        <ListCollection props={playlists} />
+        <ListCollection props={lists} />
         <Divider />
-        {newPlaylistComponent}
+        {newlistComponent}
       </div>
     );
   }
 
-  addPlaylist(newPlaylist) {
-    let playlists = this.state.playlists;
+  addlist(newlist) {
+    let lists = this.state.lists;
 
-    playlists.push(newPlaylist);
+    lists.push(newlist);
 
     this.setState({
-      playlists : playlists,
+      lists : lists,
     },function() {
       this.forceUpdate();
     });
 
-    this.props.callback(newPlaylist);
+    this.props.callback(newlist);
   }
 
-  getNewPlaylistComponent() {
-    if(this.state.createPlaylist) {
+  getNewlistComponent() {
+    if(this.state.createList) {
       return (
-        <div className="youtube-playlist-create-new">
-          <TextInput callback={this.addPlaylist}/>
+        <div className="list-create-new">
+          <TextInput callback={this.addlist}/>
         </div>
       );
     } else {
       return (
         <Menu>
           <MenuItem
-            primaryText="Create new playlist"
-            onTouchTap={this.createNewPlaylist} />
+            primaryText="Create new list"
+            onTouchTap={this.createNewlist} />
         </Menu>
       );
     }
@@ -98,10 +98,10 @@ export default class CreateList extends Component {
     const
       self = this,
       props = this.props,
-      playlists = this.getPlaylists();
+      lists = this.getlists();
 
     return (
-      <div className="youtube-playlist">
+      <div className="list">
         <div onTouchTap={this.display}>
           <span className="placeholder">{props.placeholder}</span>
           <FontIcon className="material-icons">add</FontIcon>
@@ -112,7 +112,7 @@ export default class CreateList extends Component {
             anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'left', vertical: 'top'}}
             onRequestClose={this.close}>
-            {playlists}
+            {lists}
           </Popover>
         </div>
       </div>
@@ -120,13 +120,13 @@ export default class CreateList extends Component {
   }
 }
 
-CreateList.propTypes = {
+createList.propTypes = {
   placeholder : React.PropTypes.string,
-  playlists   : React.PropTypes.array,
+  lists       : React.PropTypes.array,
   callback    : React.PropTypes.func.isRequired
 };
 
-CreateList.defaultProps = {
+createList.defaultProps = {
   placeholder : 'Add to List'
 }
 

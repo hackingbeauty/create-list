@@ -15,14 +15,14 @@ const Demo = React.createClass({
   },
 
   render() {
-    const playlists = ['DMT','TWIN PEAKS','SHARON STONE'];
+    const list = ['DMT','TWIN PEAKS','SHARON STONE'];
     return <MuiThemeProvider>
       <div>
-        <AppBar title="Youtube Playlist" />
+        <AppBar title="List" />
         <div className="container">
           <CreateList
             callback={this.callback}
-            playlists={playlists} />
+            lists={list} />
         </div>
       </div>
     </MuiThemeProvider>
