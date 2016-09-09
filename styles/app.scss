@@ -1,17 +1,24 @@
-.list {
+.list-container {
   cursor: pointer;
+  width: 285px;
+  overflow: hidden;
+}
+
+.list-menu {
+}
+
+.list-popover {
 }
 
 .listItem {
   clear: both;
   display: inline-block !important;
   width: 100%;
-
 }
 
 .listCheckbox {
   float: left;
-  width: 10% !important;
+  width: 20px !important;
   margin-top: 10px;
 }
 

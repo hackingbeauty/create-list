@@ -12,7 +12,7 @@ export default function ListCollection(args) {
   if(lists && lists.length) {
     let menuItems = getlistItems(lists);
     return (
-      <div className="menu">
+      <div className="list-menu">
         <Menu>
           {menuItems}
         </Menu>
@@ -20,8 +20,8 @@ export default function ListCollection(args) {
     );
   } else {
     return (
-      <div className="menu">
-        <Menu>
+      <div>
+        <Menu className="list-menu">
           <MenuItem primaryText="You have 0 lists" />
         </Menu>
       </div>

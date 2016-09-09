@@ -9,7 +9,7 @@ import { Popover,
 import ListCollection       from './ListCollection';
 import TextInput            from './TextInput';
 
-export default class createList extends Component {
+export default class CreateList extends Component {
   constructor(props) {
     super(props);
     this.display = this.display.bind(this);
@@ -54,7 +54,7 @@ export default class createList extends Component {
       newlistComponent = this.getNewlistComponent();
 
     return (
-      <div>
+      <div className="list-container">
         <ListCollection props={lists} />
         <Divider />
         {newlistComponent}
@@ -101,11 +101,12 @@ export default class createList extends Component {
       lists = this.getlists();
 
     return (
-      <div className="list">
+      <div>
         <div onTouchTap={this.display}>
           <span className="placeholder">{props.placeholder}</span>
           <FontIcon className="material-icons">add</FontIcon>
           <Popover
+            className="list-popover"
             key="popover"
             open={this.state.open}
             anchorEl={this.state.anchorEl}
@@ -120,13 +121,13 @@ export default class createList extends Component {
   }
 }
 
-createList.propTypes = {
+CreateList.propTypes = {
   placeholder : React.PropTypes.string,
   lists       : React.PropTypes.array,
   callback    : React.PropTypes.func.isRequired
 };
 
-createList.defaultProps = {
+CreateList.defaultProps = {
   placeholder : 'Add to List'
 }
 

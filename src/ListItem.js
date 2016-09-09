@@ -23,6 +23,7 @@ export default class ListItem extends Component {
 
   checkTheBox() {
     const self = this;
+
     this.setState({
       checked : !self.state.checked
     });
