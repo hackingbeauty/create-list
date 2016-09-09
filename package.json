@@ -5,7 +5,7 @@
   "author": "",
   "homepage": "",
   "repository": "https://github.com/hackingbeauty/youtube-playlist.git",
-  "main": "lib/index.js",
+  "main": "lib/CreateList.js",
   "jsnext:main": "es/index.js",
   "module": "es/index.js",
   "files": [
