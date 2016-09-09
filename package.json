@@ -1,6 +1,6 @@
 {
   "name": "create-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React-based UI component that lets you add items to a list.",
   "author": "",
   "homepage": "",
@@ -31,8 +31,7 @@
     "lint": "eslint src",
     "build-css": "node-sass --include-path scss styles/app.scss lib/youtube_playlist_base.css"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "^15.0.0",
     "react-dom": "^15.1.0",
