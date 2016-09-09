@@ -120,13 +120,13 @@ export default class CreateList extends Component {
   }
 }
 
-YoutubePlaylist.propTypes = {
+CreateList.propTypes = {
   placeholder : React.PropTypes.string,
   playlists   : React.PropTypes.array,
   callback    : React.PropTypes.func.isRequired
 };
 
-YoutubePlaylist.defaultProps = {
+CreateList.defaultProps = {
   placeholder : 'Add to List'
 }
 

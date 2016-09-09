@@ -42,12 +42,12 @@ function getPlaylistItems(playlists) {
   return playlistItems;
 }
 
-Playlist.propTypes = {
+ListCollection.propTypes = {
   hintText: React.PropTypes.string,
   type    : React.PropTypes.string,
   playlists : React.PropTypes.array
 };
 
-Playlist.defaultProps = {
+ListCollection.defaultProps = {
   type: 'text'
 }
