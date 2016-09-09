@@ -29,7 +29,7 @@
     "test:coverage": "nwb test --coverage",
     "test:watch": "bin/test.sh -w",
     "lint": "eslint src",
-    "build-css": "node-sass --include-path scss styles/app.scss lib/youtube_playlist_base.css"
+    "build-css": "node-sass --include-path scss styles/app.scss lib/create-list-base.css"
   },
   "dependencies": {},
   "peerDependencies": {
