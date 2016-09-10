@@ -3,7 +3,7 @@ import {render}             from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { AppBar,
          MuiThemeProvider } from 'material-ui';
-import CreateList           from '../../src/CreateList';
+import CreateList           from '../../lib/CreateList';
 
 injectTapEventPlugin();
 
