@@ -11,14 +11,15 @@ import '../../styles/app.scss';
 import './styles/demo-page-styles.scss';
 
 const Demo = React.createClass({
-  callback(newPlaylist) {
+  callback(newListObj) {
+    console.log('newListObj is: ', newListObj);
   },
 
   render() {
     const list = [
-      {name: 'DMT', checked: true},
+      {name : 'DMT',        checked : true},
       {name : 'TWIN PEAKS', checked : false},
-      {name: 'SHARON STONE'}];
+      {name : 'SHARON STONE'}];
 
     return <MuiThemeProvider>
       <div>

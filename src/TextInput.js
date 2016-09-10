@@ -30,7 +30,7 @@ export default class TextInput extends Component {
   }
 
   submitList() {
-    this.props.callback(this.state.listName);
+    this.props.callback({name: this.state.listName, checked: true});
     this.setState({
       listName : ''
     });

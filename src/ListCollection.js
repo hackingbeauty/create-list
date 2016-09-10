@@ -10,7 +10,7 @@ export default function ListCollection(props) {
   const lists = props.lists;
 
   if(lists && lists.length) {
-    let menuItems = getlistItems(lists);
+    let menuItems = getlistItems(props);
 
     return (
       <div className="list-menu">
@@ -30,19 +30,20 @@ export default function ListCollection(props) {
   }
 }
 
-function getlistItems(lists) {
+function getlistItems(props) {
   let
     listItems = [],
-    len = lists.length;
+    lists = props.lists,
+    len = props.lists.length;
 
   while(len--) {
     if(lists[len].checked && lists[len].checked === true) {
       listItems.push(
-        <ListItem key={'listItem'+len} listItem={lists[len]} checked={true} />
+        <ListItem key={'listItem'+len} listItem={lists[len]} checked={true} callback={props.callback}/>
       );
     } else {
       listItems.push(
-        <ListItem key={'listItem'+len} listItem={lists[len]} checked={false} />
+        <ListItem key={'listItem'+len} listItem={lists[len]} checked={false} callback={props.callback}/>
       );
     }
 

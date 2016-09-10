@@ -55,17 +55,23 @@ export default class CreateList extends Component {
 
     return (
       <div className="list-container">
-        <ListCollection lists={lists} />
+        <ListCollection lists={lists} callback={this.addlist}/>
         <Divider />
         {newlistComponent}
       </div>
     );
   }
 
-  addlist(newlist) {
-    let lists = this.state.lists;
+  addlist(newList) {
+    const lists = this.state.lists;
 
-    lists.push(newlist);
+    const listExists = lists.find(function(listItem) {
+      return listItem.name === newList.name;
+    });
+
+    if(!listExists) {
+      lists.push(newList);
+    }
 
     this.setState({
       lists : lists,
@@ -73,14 +79,14 @@ export default class CreateList extends Component {
       this.forceUpdate();
     });
 
-    this.props.callback(newlist);
+    this.props.callback(newList);
   }
 
   getNewlistComponent() {
     if(this.state.createList) {
       return (
         <div className="list-create-new">
-          <TextInput callback={this.addlist}/>
+          <TextInput callback={this.addlist} />
         </div>
       );
     } else {

@@ -26,7 +26,10 @@ export default class ListItem extends Component {
 
     this.setState({
       checked : !self.state.checked
+    }, function() {
+      this.props.callback({name: self.props.listItem.name, checked: true});
     });
+
   }
 
   render() {
