@@ -102,7 +102,7 @@ export default class CreateList extends Component {
 
     return (
       <div>
-        <div onTouchTap={this.display}>
+        <div onTouchTap={this.display} className="list-container">
           <span className="placeholder">{props.placeholder}</span>
           <FontIcon className="material-icons">add</FontIcon>
           <Popover
