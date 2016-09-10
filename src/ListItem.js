@@ -37,7 +37,7 @@ export default class ListItem extends Component {
         <Checkbox
           className='listCheckbox'
           checked={this.state.checked} />
-        <span className="listName">{this.props.listItem}</span>
+        <span className="listName">{this.props.listItem.name}</span>
       </MenuItem>
     );
   }

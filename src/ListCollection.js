@@ -6,11 +6,12 @@ import React               from 'react';
 import { Menu, MenuItem  } from 'material-ui';
 import ListItem            from './ListItem';
 
-export default function ListCollection(args) {
-  const lists = args.props.lists;
+export default function ListCollection(props) {
+  const lists = props.lists;
 
   if(lists && lists.length) {
     let menuItems = getlistItems(lists);
+
     return (
       <div className="list-menu">
         <Menu>
@@ -35,9 +36,16 @@ function getlistItems(lists) {
     len = lists.length;
 
   while(len--) {
-    listItems.push(
-      <ListItem key={'listItem'+len} listItem={lists[len]} checked={true} />
-    );
+    if(lists[len].checked && lists[len].checked === true) {
+      listItems.push(
+        <ListItem key={'listItem'+len} listItem={lists[len]} checked={true} />
+      );
+    } else {
+      listItems.push(
+        <ListItem key={'listItem'+len} listItem={lists[len]} checked={false} />
+      );
+    }
+
   }
   return listItems;
 }
@@ -45,7 +53,7 @@ function getlistItems(lists) {
 ListCollection.propTypes = {
   hintText: React.PropTypes.string,
   type    : React.PropTypes.string,
-  lists : React.PropTypes.array
+  lists   : React.PropTypes.array
 };
 
 ListCollection.defaultProps = {

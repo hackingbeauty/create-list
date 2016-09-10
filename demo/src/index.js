@@ -15,7 +15,11 @@ const Demo = React.createClass({
   },
 
   render() {
-    const list = ['DMT','TWIN PEAKS','SHARON STONE'];
+    const list = [
+      {name: 'DMT', checked: true},
+      {name : 'TWIN PEAKS', checked : false},
+      {name: 'SHARON STONE'}];
+
     return <MuiThemeProvider>
       <div>
         <AppBar title="List" />

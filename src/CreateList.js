@@ -50,12 +50,12 @@ export default class CreateList extends Component {
       self = this,
       props = this.props,
       state = this.state,
-      lists = {lists: this.props.lists},
+      lists = this.props.lists,
       newlistComponent = this.getNewlistComponent();
 
     return (
       <div className="list-container">
-        <ListCollection props={lists} />
+        <ListCollection lists={lists} />
         <Divider />
         {newlistComponent}
       </div>
