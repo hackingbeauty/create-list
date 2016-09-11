@@ -3,7 +3,7 @@ import {render}             from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { AppBar,
          MuiThemeProvider } from 'material-ui';
-import CreateList           from '../../lib/CreateList';
+import CreateList           from '../../src/CreateList';
 
 injectTapEventPlugin();
 
@@ -16,10 +16,7 @@ const Demo = React.createClass({
   },
 
   render() {
-    const list = [
-      {name : 'DMT',        checked : true},
-      {name : 'TWIN PEAKS', checked : false},
-      {name : 'SHARON STONE'}];
+    const list = [];
 
     return <MuiThemeProvider>
       <div>

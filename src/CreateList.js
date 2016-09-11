@@ -64,10 +64,13 @@ export default class CreateList extends Component {
 
   addlist(newList) {
     const lists = this.state.lists;
+    let listExists = false;
 
-    const listExists = lists.find(function(listItem) {
-      return listItem.name === newList.name;
-    });
+    if(lists.length) {
+      listExists = lists.find(function(listItem) {
+        return listItem.name === newList.name;
+      });
+    }
 
     if(!listExists) {
       lists.push(newList);
@@ -109,8 +112,8 @@ export default class CreateList extends Component {
     return (
       <div>
         <div onTouchTap={this.display} className="list-container">
-          <span className="placeholder">{props.placeholder}</span>
-          <FontIcon className="material-icons">add</FontIcon>
+          <span className="listPlaceholder">{props.placeholder}</span>
+          <FontIcon className=" listAddIcon material-icons">add</FontIcon>
           <Popover
             className="list-popover"
             key="popover"

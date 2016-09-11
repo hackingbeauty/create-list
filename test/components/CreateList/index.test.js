@@ -24,4 +24,8 @@ describe('<CreateList />', function() {
 
   });
 
+    it('should not create a list if no name is entered', function() {
+
+  });
+
 });

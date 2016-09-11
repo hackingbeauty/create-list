@@ -1,19 +1,28 @@
 .list-container {
   cursor: pointer;
+  overflow: hidden;
+  width: 290px;
 }
 
 .list-menu {
 }
 
 .list-popover {
-  width: 290px;
-  border: 2px solid black;
 }
 
 .listItem {
   clear: both;
   display: inline-block !important;
   width: 100%;
+}
+
+.listPlaceholder {
+}
+
+.listAddIcon {
+  position: relative;
+  top: 5px;
+  left: 2px;
 }
 
 .listCheckbox {
